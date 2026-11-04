@@ -1,10 +1,9 @@
 ## Trabajo práctico grupal — Sistema de guía de apoyo para drones
 
 **Cátedra:** Algoritmos y Estructura de Datos  
-**Docente:** Ing. Méndez  
+**Docente:** Ing. Méndez  Pablo
 **Ciclo lectivo:** 2026  
-**Comisión:** K1005
-**Grupo:** [COMPLETAR]  
+**Comisión:** K1103  
 **Fecha de entrega:** 04/11/2026 
 
 ### Integrantes
