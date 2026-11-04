@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdio>
-#include <limits>
 using namespace std;
 
 struct OrdenArchivo
@@ -180,7 +179,7 @@ int main()
 
     cin >> opcion;
 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore();
 
     if (opcion == 1)
     {
