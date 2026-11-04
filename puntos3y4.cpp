@@ -17,6 +17,67 @@ struct OrdenArchivo
     int siguientey = 0;
 };
 
+void crearArchivo()
+{
+    FILE *archivo;
+    OrdenArchivo orden;
+    char respuesta = 's';
+    char nombreArchivo[260];
+
+    cout << "Ingrese la ruta y el nombre del archivo: ";
+    cin.getline(nombreArchivo, 260);
+    
+    archivo = fopen(nombreArchivo, "wb");
+
+    if (archivo == NULL)
+    {
+        cout << "No se pudo crear el archivo." << endl;
+        return;
+    }
+    while (respuesta == 's')
+    {
+        cout << "Ingrese x: ";
+        cin >> orden.x;
+
+        cout << "Ingrese y: ";
+        cin >> orden.y;
+
+        cout << "Ingrese el tiempo de espera: ";
+        cin >> orden.espera;
+
+        cout << "Desea soltar la granada 1? (1 = si, 0 = no): ";
+        cin >> orden.soltarGranada1;
+
+        cout << "Desea soltar la granada 2? (1 = si, 0 = no): ";
+        cin >> orden.soltarGranada2;
+
+        cout << "Desea realizar un ataque kamikaze? (1 = si, 0 = no): ";
+        cin >> orden.ataqueKamikaze;
+
+        cout << "Desea aterrizar? (1 = si, 0 = no): ";
+        cin >> orden.aterrizaje;
+
+        cout << "Desea despegar? (1 = si, 0 = no): ";
+        cin >> orden.despegue;
+
+        cout << "Ingrese siguientex: ";
+        cin >> orden.siguientex;
+
+        cout << "Ingrese siguientey: ";
+        cin >> orden.siguientey;
+
+        fwrite(&orden, sizeof(OrdenArchivo), 1, archivo);
+
+        cout << "Registro guardado correctamente." << endl;
+
+        cout << "Desea cargar otra orden? (s/n): ";
+        cin >> respuesta;
+    }
+
+    fclose(archivo);
+
+    cout << "Archivo cerrado correctamente." << endl;
+}
 void corregirRegistro()
 {
     char nombreArchivo[260];
@@ -48,9 +109,19 @@ void corregirRegistro()
         {
             encontrado = true;
 
-            cout << "Registro encontrado." << endl;
+            cout << "\nRegistro encontrado. Datos actuales:" << endl;
+            cout << "x: " << orden.x << endl;
+            cout << "y: " << orden.y << endl;
+            cout << "Espera: " << orden.espera << endl;
+            cout << "Granada 1: " << orden.soltarGranada1 << endl;
+            cout << "Granada 2: " << orden.soltarGranada2 << endl;
+            cout << "Ataque kamikaze: " << orden.ataqueKamikaze << endl;
+            cout << "Aterrizaje: " << orden.aterrizaje << endl;
+            cout << "Despegue: " << orden.despegue << endl;
+            cout << "Siguiente x: " << orden.siguientex << endl;
+            cout << "Siguiente y: " << orden.siguientey << endl;
 
-            cout << "Ingrese los nuevos datos:" << endl;
+            cout << "\nIngrese los nuevos datos:" << endl;
 
             cout << "x: ";
             cin >> orden.x;
@@ -99,80 +170,21 @@ void corregirRegistro()
 
     fclose(archivo);
 }
-
 int main()
 {
     int opcion;
 
-    cout << "1. Crear archivo" << endl;
-    cout << "2. Corregir registro" << endl;
+    cout << "1. Crear archivo de ataque nuevo" << endl;
+    cout << "2. Corregir registro del archivo" << endl;
     cout << "Seleccione una opcion: ";
+
     cin >> opcion;
 
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     if (opcion == 1)
     {
-        FILE *archivo;
-        OrdenArchivo orden;
-        char respuesta = 's';
-        char nombreArchivo[260];
-
-        cout << "Ingrese la ruta y el nombre del archivo: ";
-        cin.getline(nombreArchivo, 260);
-
-        archivo = fopen(nombreArchivo, "wb");
-
-        if (archivo == NULL)
-        {
-            cout << "No se pudo crear el archivo." << endl;
-        }
-        else
-        {
-            while (respuesta == 's')
-            {
-                cout << "Ingrese x: ";
-                cin >> orden.x;
-
-                cout << "Ingrese y: ";
-                cin >> orden.y;
-
-                cout << "Ingrese el tiempo de espera: ";
-                cin >> orden.espera;
-
-                cout << "Desea soltar la granada 1? (1 = si, 0 = no): ";
-                cin >> orden.soltarGranada1;
-
-                cout << "Desea soltar la granada 2? (1 = si, 0 = no): ";
-                cin >> orden.soltarGranada2;
-
-                cout << "Desea realizar un ataque kamikaze? (1 = si, 0 = no): ";
-                cin >> orden.ataqueKamikaze;
-
-                cout << "Desea aterrizar? (1 = si, 0 = no): ";
-                cin >> orden.aterrizaje;
-
-                cout << "Desea despegar? (1 = si, 0 = no): ";
-                cin >> orden.despegue;
-
-                cout << "Ingrese siguientex: ";
-                cin >> orden.siguientex;
-
-                cout << "Ingrese siguientey: ";
-                cin >> orden.siguientey;
-
-                fwrite(&orden, sizeof(OrdenArchivo), 1, archivo);
-
-                cout << "Registro guardado correctamente." << endl;
-
-                cout << "Desea cargar otra orden? (s/n): ";
-                cin >> respuesta;
-            }
-
-            fclose(archivo);
-
-            cout << "Archivo cerrado correctamente." << endl;
-        }
+        crearArchivo();
     }
     else if (opcion == 2)
     {
