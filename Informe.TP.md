@@ -12,7 +12,7 @@
 | Apellido y nombre | Legajo | Correo electrónico | Tareas realizadas |
 |---|---|---|---|
 | [INTEGRANTE 1] | [LEGAJO] | [CORREO] | Puntos 1 , 2 y 7 |
-| [Palma Victoria] | [221.438-6] | [vpalmapizarro@frba.utn.edu.ar] | Puntos 3, 4 y 7 |
+| Palma Victoria | 221.438-6 | vpalmapizarro@frba.utn.edu.ar | Puntos 3, 4 y 7 |
 | Quintas Azul | 220.977-9 | aquintas@frba.utn.edu.ar  | Puntos 5, 6 y 7|
 
 
