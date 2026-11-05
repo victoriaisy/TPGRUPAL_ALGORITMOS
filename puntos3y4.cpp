@@ -169,30 +169,3 @@ void corregirRegistro()
 
     fclose(archivo);
 }
-int main()
-{
-    int opcion;
-
-    cout << "1. Crear archivo de ataque nuevo" << endl;
-    cout << "2. Corregir registro del archivo" << endl;
-    cout << "Seleccione una opcion: ";
-
-    cin >> opcion;
-
-    cin.ignore();
-
-    if (opcion == 1)
-    {
-        crearArchivo();
-    }
-    else if (opcion == 2)
-    {
-        corregirRegistro();
-    }
-    else
-    {
-        cout << "Opcion incorrecta." << endl;
-    }
-
-    return 0;
-}
